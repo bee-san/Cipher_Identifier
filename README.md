@@ -10,6 +10,36 @@ A Rust library and CLI tool for identifying classical ciphers based on statistic
 - Command-line interface for easy use
 - Can be used as a library in other Rust projects
 
+## Installation
+
+### From crates.io
+
+Add the crate to your project's dependencies:
+
+```toml
+[dependencies]
+cipher_identifier = "0.2.0"
+```
+
+Or install the CLI tool globally:
+
+```bash
+cargo install cipher_identifier
+```
+
+### Building from Source
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/cipher_identifier.git
+cd cipher_identifier
+
+# Build the project
+cargo build --release
+
+# The binary will be available at target/release/cipher_identifier
+```
+
 ## Supported Ciphers
 
 The tool can identify the following 58 classical cipher types:
@@ -37,19 +67,6 @@ The tool can identify the following 58 classical cipher types:
 ### Prerequisites
 
 - Rust and Cargo (install from [rustup.rs](https://rustup.rs/))
-
-### Building from Source
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/cipher_identifier.git
-cd cipher_identifier
-
-# Build the project
-cargo build --release
-
-# The binary will be available at target/release/cipher_identifier
-```
 
 ## Usage
 
@@ -157,7 +174,7 @@ fn main() {
     let text = "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG";
     
     // Get the top 5 most likely ciphers
-    let results = identify_cipher(text, 5, None);
+    let results = identify_cipher::identify_cipher(text, 5, None);
     
     for (cipher, score) in results {
         println!("{}: {:.3}", cipher, score);
@@ -233,7 +250,7 @@ fn analyze_ciphertext(text: &str) {
     println!("Shannon Entropy: {:.6}", stats["Shannon"]);
     
     // Step 2: Identify the cipher
-    let results = identify_cipher(text, 5, None);
+    let results = identify_cipher::identify_cipher(text, 5, None);
     
     // Step 3: Load cipher type definitions for additional information
     let cipher_types = load_cipher_types("resources/cipher_types.json").unwrap_or_default();
@@ -252,6 +269,34 @@ fn main() {
     analyze_ciphertext(text);
 }
 ```
+
+### Using as a Dependency in Your Project
+
+1. Add to your `Cargo.toml`:
+   ```toml
+   [dependencies]
+   cipher_identifier = "0.2.0"
+   ```
+
+2. Import and use in your code:
+   ```rust
+   use cipher_identifier::identify_cipher;
+   use cipher_identifier::statistical_tests::all_stats::get_all_stats;
+   
+   fn main() {
+       let ciphertext = "HELLOWORLD";
+       let results = identify_cipher::identify_cipher(ciphertext, 3, None);
+       println!("Top 3 most likely ciphers:");
+       for (cipher, score) in results {
+           println!("{}: {:.3}", cipher, score);
+       }
+   }
+   ```
+
+3. Run your project:
+   ```bash
+   cargo run
+   ```
 
 ## Statistical Tests
 
@@ -274,10 +319,10 @@ The tool uses the following statistical tests to analyze ciphertext:
 The library includes a benchmarking module to test the accuracy of the cipher identification algorithm:
 
 ```rust
-use cipher_identifier::benchmark::run_benchmark;
+use cipher_identifier::benchmark;
 
 fn main() {
-    run_benchmark("path/to/test_data.json");
+    benchmark::benchmark("path/to/test_data.json").unwrap();
 }
 ```
 
