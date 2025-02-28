@@ -27,7 +27,8 @@ use std::collections::HashMap;
 ///
 /// let text = "HELLOWORLD";
 /// let dic = get_dic(text);
-/// assert!(dic > 0.0);
+/// // DIC should be a non-negative value
+/// assert!(dic >= 0.0);
 /// ```
 pub fn get_dic(text: &str) -> f64 {
     let data = convert_string(text);

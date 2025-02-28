@@ -23,7 +23,7 @@
 /// use cipher_identifier::statistical_tests::utils::convert_string;
 ///
 /// let result = convert_string("ABC123");
-/// assert_eq!(result, vec![0, 1, 2, 30, 31, 32]);
+/// assert_eq!(result, vec![0, 1, 2, 28, 29, 30]);
 /// ```
 pub fn convert_string(text: &str) -> Vec<usize> {
     let cipher_symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#0123456789";
