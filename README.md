@@ -98,6 +98,21 @@ cipher_identifier --text "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG" --cipher playfair
 
 The `cipher_identifier` library provides a comprehensive API for analyzing ciphertext and identifying classical ciphers. It can be integrated into other Rust projects to add cipher identification capabilities.
 
+### Importing the Library
+
+To use the library in your Rust project:
+
+```rust
+// Add to your Cargo.toml:
+// [dependencies]
+// cipher_identifier = "0.2.0"
+
+// In your code:
+use cipher_identifier::identify_cipher;
+use cipher_identifier::statistical_tests::all_stats::get_all_stats;
+use cipher_identifier::cipher_analyzer::CipherAnalyzer;
+```
+
 ### Key Components
 
 1. **Cipher Identification**: Core functionality to identify the most likely cipher type
