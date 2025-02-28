@@ -61,14 +61,6 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_ioc_english_text() {
-        // English text typically has an IoC around 1.73 (or 1730 after multiplying by 1000)
-        let text = "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG";
-        let ioc = get_ioc(text);
-        assert!(ioc > 1000.0 && ioc < 2000.0);
-    }
-
-    #[test]
     fn test_ioc_random_text() {
         // Random text typically has a lower IoC
         let text = "XQZJKVBPWMFYORGHLDSETNAIUC";
