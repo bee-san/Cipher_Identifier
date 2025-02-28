@@ -68,7 +68,7 @@ pub type CipherTypes = HashMap<String, CipherType>;
 /// ```no_run
 /// use cipher_identifier::models::cipher_type::load_cipher_types;
 ///
-/// let cipher_types = load_cipher_types("resources/cipher_types.json");
+/// let cipher_types = load_cipher_types("resources/cipher_types.json").unwrap();
 /// assert!(cipher_types.contains_key("6x6bifid"));
 /// ```
 pub fn load_cipher_types(path: &str) -> Result<CipherTypes, Box<dyn std::error::Error>> {
