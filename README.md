@@ -1,5 +1,7 @@
 # cipher_identifier
 
+[![Discord](https://img.shields.io/discord/754001738184392704?logo=discord&label=Discord)](https://discord.skerritt.blog)
+
 A Rust library and CLI tool for identifying classical ciphers based on statistical analysis of ciphertext. It calculates various statistical metrics and compares them against known patterns for different cipher types to determine the most likely cipher used.
 
 ## Features
